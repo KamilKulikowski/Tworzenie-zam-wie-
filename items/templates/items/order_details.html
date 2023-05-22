@@ -1,0 +1,44 @@
+{% extends 'base_bulma.html' %}
+{% load static %}
+{% block navbar %}  {% include 'navbar.html' %} {% endblock navbar %}
+{% block h1 %} Order no.{{info.id}}{% endblock h1 %}
+
+{% block main %}
+<table class="table">
+    <thead>
+    <tr>
+        <th>Order date</th>
+        <th>Total</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ info.date }}</td>
+            <td>{{ info.price }} PLN</td>
+        </tr>
+    </tbody>
+    <thead>
+        <tr>
+            <th>Ordered items:</th>
+            <th></th>
+            <th></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+        {% for k,v in products.items %}
+        <tr>
+          <td>{{ v.0|make_list|slice:'3:'|join:'' }}</td>
+          <td>{{ v.1 }}</td>
+          <td>{{ v.2 }} PLN</td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock main %}

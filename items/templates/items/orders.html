@@ -1,0 +1,34 @@
+{% extends 'base_bulma.html' %}
+{% load static %}
+{% block navbar %}  {% include 'navbar.html' %} {% endblock navbar %}
+{% block h1 %}Your orders{% endblock h1 %}
+
+
+{% block main %}
+<table class="table">
+    <thead>
+    <tr>
+        <th>Order ID</th>
+        <th>Order date</th>
+        <th>Price</th>
+        <th>Code</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.date }}</td>
+            <td>{{ order.price }}</td>
+            <td>{{ order.code }}</td>
+            <td>
+                <button class="button">
+                    <a href="{% url 'order_details' order_id=order.id %}">View order</a>
+                  </button>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock main %}

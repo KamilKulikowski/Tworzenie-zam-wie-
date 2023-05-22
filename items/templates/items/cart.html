@@ -1,0 +1,48 @@
+{% extends 'base_bulma.html' %}
+{% load static %}
+
+{% block navbar %} {% include 'navbar.html' %} {% endblock navbar %}
+
+{% block h1 %}Your cart{% endblock h1 %}
+
+{% block main %}
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>count</th>
+    <th>price</th>
+  </tr>
+  {% for k,v in items.items %}
+  <tr>
+    {% for m in v %}
+    <td>{{m}}</td>
+    {% endfor %}
+  </tr>
+  {% endfor %}
+  Total: {{summary}}
+</table>
+<table class="table">
+  <tr>
+    <td>
+      <form action="" method='post' class="CartFunctions">
+        {% csrf_token %}
+
+        <input type="submit"  id="1" value="Clear cart" class="button is-danger">
+        <input type="submit" id="2" value="Place order" class="button is-primary">
+      </form>
+    </td>
+  </tr>
+  {% if errors %}
+  <tr>
+    <td colspan="2"><span>{{ errors }}</span></td>
+  </tr>
+{% endif %}
+</table>
+
+{% endblock main %}
+
+{% block script %}
+<script type="text/javascript" src="{% static 'js/clear_cart.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/place_order.js' %}"></script>
+{% endblock %}

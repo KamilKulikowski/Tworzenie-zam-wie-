@@ -1,0 +1,12 @@
+{% extends 'base_bulma.html' %}
+{% load static %}
+
+{% block navbar %}  {% include 'navbar.html' %} {% endblock navbar %}
+
+{% block main %}
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+{% endblock main %}
