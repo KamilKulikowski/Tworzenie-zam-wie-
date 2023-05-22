@@ -1,0 +1,55 @@
+{% extends 'base_bulma.html' %}
+
+{% block title %}Ordering App{% endblock title %}
+
+{% block main %}
+
+  <div class="container" style="margin: 10px 10vh;">
+    <div class="hero is-primary is-bold">
+      <div class="hero-body">
+        <h1 class="title is-1 has-text-centered">Welcome to Ordering App</h1>
+        <h2 class="subtitle is-3 has-text-centered">The easiest way to manage your orders</h2>
+      </div>
+            </div>
+              {% if user.is_authenticated %}
+        <div class="columns is-multiline" style="margin-top: 50px;">
+          <div class="column is-one-third">
+            <div class="card">
+              <div class="card-content">
+                <p class="title is-4">Customers section</p>
+                <p class="subtitle is-6">Manage your customers here</p>
+              </div>
+              <footer class="card-footer">
+                <a href="{% url 'customer_table' %}" class="card-footer-item">View customers</a>
+              </footer>
+            </div>
+          </div>
+          <div class="column is-one-third">
+            <div class="card">
+              <div class="card-content">
+                <p class="title is-4">Sellers section</p>
+                <p class="subtitle is-6">Manage your sellers here</p>
+              </div>
+              <footer class="card-footer">
+                <a href="{% url 'sellers_table' %}" class="card-footer-item">View sellers</a>
+              </footer>
+            </div>
+          </div>
+          <div class="column is-one-third">
+            <div class="card">
+              <div class="card-content">
+                <p class="title is-4">Items section</p>
+                <p class="subtitle is-6">Add new items or view your inventory</p>
+              </div>
+              <footer class="card-footer">
+                <a href="{% url 'item_create' %}" class="card-footer-item">New item</a>
+                <a href="{% url 'items_table' %}" class="card-footer-item">View items</a>
+              </footer>
+            </div>
+          </div>
+        </div>
+        {% else %}
+        <h1 class="title is-1" style="margin-top: 50px;">Zaloguj się, by mieć uprawnienia.</h1>
+        {%endif%}
+    </div>
+{% endblock main %}

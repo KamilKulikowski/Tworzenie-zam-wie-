@@ -1,0 +1,102 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+        <a class="navbar-item" href="/">
+            <i class="fa-solid fa-house"></i>
+          Home
+        </a>
+
+        {% if user.is_authenticated %}
+            <a class="navbar-item" href="{% url 'user_panel' %}">
+              <i class="fa-solid fa-user"></i>
+            Your Account
+            </a>
+        <a class="navbar-item" href="/cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            Cart
+        </a>
+        {% endif %}
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            {% if user.is_authenticated %}
+                <a class="button" href="/logout">
+                    logout
+                </a>
+                <a class="button" href="/admin">
+                     Admin
+                </a>
+            {% else %}
+            <a class="button" href="/login">
+                Log in
+              </a>
+                <div style="float:right;" ><a class='button is-right' href="{% url 'customer_create' %}">Sign up</a></div>
+
+            {% endif %}
+          <style>
+  .navbar {
+    background-color: #4CAF50;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+
+  .navbar-burger {
+    color: #fff;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .navbar-burger:hover {
+    color: #4CAF50;
+  }
+
+  .navbar-item {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    transition: all 0.3s ease;
+  }
+
+  .navbar-item:hover {
+    background-color: #fff;
+    color: #4CAF50;
+  }
+
+  .button {
+    border: none;
+    background-color: #fff;
+    color: #4CAF50;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .button:hover {
+    background-color: #4CAF50;
+    color: #ffff;
+  }
+</style>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
